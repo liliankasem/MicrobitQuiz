@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Microbit Snowflake Badge";
+}
+<div style="width: 50%; margin: 0px auto;" >
+    <h2>@ViewData["Title"]</h2>
+    <h5>@ViewData["Token"]</h5>
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/8znu58E7tN8" frameborder="0" allowfullscreen></iframe>
+    <br>
+    <a class="btn btn-default btn-default" href="https://www.microbit.co.uk/app/#edit:294fed68-4bd4-4c70-1a54-22b47dfffdeb:vvSUppbCMHkNWpnE">Start Tutorial</a>
+    <button class="btn btn-default btn-default" onclick="startQuiz()">Start Quiz</button>
+</div>
+<br/><br />
+
+<div id="bodyContainer" ng-app="QuizApp" style="display: none;" >
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="flip-container text-center col-md-12" ng-controller="QuizCtrl" ng-init="checkQuestions()">
+                    <div class="front" >
+                        <p class="lead">Score: {{score}} | Attempts: {{attempt}}</p>
+                        <p class="lead">{{title}}</p>
+                        <div class="row text-center">
+                            <button class="btn btn-info btn-lg option" ng-repeat="option in options" ng-click="checkAnswer(option)" ng-disabled="disabled">{{option.Title}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    function startQuiz() {
+        document.getElementById('bodyContainer').style.display = "block";
+    }
+</script>
