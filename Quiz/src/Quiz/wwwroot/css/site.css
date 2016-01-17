@@ -71,11 +71,17 @@ textarea {
 
 
 /* Quiz styles */
+.flip-container .back,
+.flip-container .front {
+    border: 5px solid #00bcf2;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
 
 #content {
     position: relative;
     background: #fff;
-    padding: 50px 0px 50px 0px;
+    padding: 50px 0 50px 0;
 }
 
 .option {
@@ -93,4 +99,12 @@ div.incorrect p {
 
 .btn {
     border-radius: 0;
+}
+
+.flip-container div.front, .flip-container div.back.flip {
+    display: block;
+}
+
+.flip-container div.front.flip, .flip-container div.back {
+    display: none;
 }

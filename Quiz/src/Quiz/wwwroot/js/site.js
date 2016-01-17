@@ -1,5 +1,5 @@
 ﻿angular.module('QuizApp', [])
-    .controller('QuizCtrl', function ($scope, $http) {
+    .controller('QuizCtrl', function ($scope, $http, $window) {
         $scope.answered = false;
         $scope.title = "loading question...";
         $scope.options = [];
@@ -13,19 +13,21 @@
         $scope.score = 0;
         $scope.attempt = 0;
         $scope.badgeResult = "";
-
-
+        $scope.answerHidden = true;
+        $scope.tryAgain = "";
+        $scope.rightAnswer = "";
 
 
         $scope.answer = function () {
-            return $scope.correctAnswer ? 'correct' : 'incorrect';
+            return $scope.correctAnswer ? 'Correct' : 'Incorrect';
         };
 
         $scope.checkQuestions = function () {
             $scope.disabled = true;
+            
 
             if ($scope.numQuestions == 0) {
-                
+                $scope.tryAgain = "";
                 $scope.options = [];
                 $scope.title = "End";
 
@@ -36,7 +38,7 @@
                     $scope.badgeResult = "fail";
                     $scope.title = "Uh oh! Looks like you need more practise.";
                 }
-
+                $scope.answerHidden = true;
                 $scope.sendAnswer($scope.badgeResult);
 
             } else {
@@ -47,18 +49,19 @@
         }
 
         $scope.nextQuestion = function () {
-
+            $scope.tryAgain = "";
             $scope.disabled = true;
 
             $scope.answered = false;
-            $scope.title = "loading question...";
+            $scope.title = "Loading question...";
             $scope.options = [];
             $scope.question = [];
 
-            $http.get("http://cors.io/?u=http://quizapi.azurewebsites.net/api/TriviaQuestions?name=snowflake").success(function (data, status, headers, config) {
+            $http.get("http://cors.io/?u=http://quizapi.azurewebsites.net/api/TriviaQuestions?name=" + quizName).success(function (data, status, headers, config) {
                 $scope.question = data[$scope.counter];
                 $scope.options = $scope.question.Options;
                 $scope.title = $scope.question.Title;
+
                 $scope.answered = false;
                 $scope.disabled = false;
                 $scope.numQuestions--;
@@ -76,21 +79,29 @@
         $scope.checkAnswer = function (option) {
             $scope.disabled = true;
             $scope.answered = true;
+            $scope.answerHidden = false;
 
             if (option.IsCorrect == true) {
                 $scope.score++;
+                $scope.correctAnswer = true;
                 $scope.checkQuestions();
             } else if (option.IsCorrect == false && $scope.attempt < 1) {
                 $scope.answered = false;
                 $scope.disabled = false;
                 $scope.attempt++;
+                $scope.correctAnswer = false;
+                $scope.tryAgain = "| Try 1 more time!";
             } else {
+                $scope.correctAnswer = false;
                 $scope.checkQuestions();
             }
         }
 
 
-
+        $scope.getRightAnswer = function () {
+            //TO:DO Get the correct answer for the current question
+            //and display the answer to users who get it wrong
+        }
 
 
 
@@ -103,12 +114,32 @@
             $scope.disabled = true;
             $scope.answered = true;
 
+            //Users token;
+            $scope.token = token;
+            //Our API key
+            $scope.apiKey = apiKey;
+
+            //iDEA API, production
+            //$scope.postUrl = "https://api.idea.org.uk/result?apiKey=" + $scope.apiKey + "&token=" + $scope.token;
+
+            //iDEA API, sandbox
+            $scope.postUrl = "http://api-sandbox.idea.org.uk/result?apiKey=" + $scope.apiKey + "&token=" + $scope.token;
+
+            //Placeholder 
+            $window.location = "http://microbitquiz.azurewebsites.net?result=" + result;
+
+            //$location.path(url);
+
             //Send badge result to iDEA API
-            $http.post('/api/trivia', { 'questionId': option.questionId, 'optionId': option.id }).success(function (data, status, headers, config) {
-                $scope.disabled = false;
-            }).error(function (data, status, headers, config) {
-                $scope.title = "Oops... something went wrong in htttp.post sendAnswer()";
-                $scope.disabled = false;
-            });
+            //$http.post($scope.postUrl, {"result": result}).success(function (data, status, headers, config) {
+            //    $scope.disabled = false;
+            //    //redirect to iDEA
+            //    $window.location = data.redirectUrl;
+            //}).error(function (data, status, headers, config) {
+            //    $scope.title = "Oops... something went wrong in htttp.post sendAnswer()";
+            //    $scope.disabled = false;
+            //});
         };
+
     });
+

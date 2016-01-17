@@ -14,10 +14,31 @@ namespace Quiz.Controllers
             return View();
         }
 
-        public IActionResult Quiz()
+        public IActionResult SnowflakeQuiz()
         {
-            ViewData["Message"] = "Welcome to the Snowflake Microbit Badge!";
-            ViewData["Token"] = "89UA9DAS0DUA0DU00JIJGY";
+            ViewData["Title"] = "Microbit Snowflake Badge";
+            ViewData["QuizName"] = "snowflake";
+            ViewData["APIKey"] = "89UA9DAS0DUA0DU00JIJGY";
+
+            return View();
+
+        }
+
+        public IActionResult LoveMeterQuiz()
+        {
+            ViewData["Title"] = "Microbit Love Meter Badge";
+            ViewData["QuizName"] = "lovemeter";
+            ViewData["APIKey"] = "89UA9DAS0DUA0DU00JIJGY";
+
+            return View();
+
+        }
+
+        public IActionResult SortingHatQuiz()
+        {
+            ViewData["Title"] = "Microbit Sorting Hat Badge";
+            ViewData["QuizName"] = "sortinghat";
+            ViewData["APIKey"] = "89UA9DAS0DUA0DU00JIJGY";
 
             return View();
 

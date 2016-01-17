@@ -10,7 +10,5 @@ namespace Quiz.Controllers
     public class QuizController : Controller
     {
 
-    
-
     }
 }
