@@ -1,5 +1,5 @@
 ﻿angular.module('QuizApp', [])
-    .controller('QuizCtrl', function ($scope, $http, $window) {
+    .controller('QuizCtrl', function ($scope, $http, $window, $timeout) {
         $scope.answered = false;
         $scope.title = "loading question...";
         $scope.options = [];
@@ -17,6 +17,7 @@
         $scope.tryAgain = "";
         $scope.rightAnswer = "";
 
+        $scope.redirected = "";
 
         $scope.answer = function () {
             return $scope.correctAnswer ? 'Correct' : 'Incorrect';
@@ -33,10 +34,12 @@
 
                 if($scope.score >= 4){
                     $scope.badgeResult = "pass";
-                    $scope.title = "Well done! You passed.";
+                    $scope.title = "Well done! You passed."
+                    $scope.redirected = "You will be redirect to the homepage in 5 seconds.";
                 } else {
                     $scope.badgeResult = "fail";
                     $scope.title = "Uh oh! Looks like you need more practise.";
+                    $scope.redirected = "You will be redirect to the homepage in 5 seconds.";
                 }
                 $scope.answerHidden = true;
                 $scope.sendAnswer($scope.badgeResult);
@@ -126,7 +129,10 @@
             $scope.postUrl = "http://api-sandbox.idea.org.uk/result?apiKey=" + $scope.apiKey + "&token=" + $scope.token;
 
             //Placeholder 
-            $window.location = "http://microbitquiz.azurewebsites.net?result=" + result;
+            $timeout(function () {
+                $window.location = "/Home";
+            }, 5000); 
+            
 
             //$location.path(url);
 

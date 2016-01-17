@@ -9,7 +9,7 @@
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
     background: url('../images/section2Slider1.png') repeat;
-    width:50%;
+    width:80%;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -76,6 +76,7 @@ textarea {
     border: 5px solid #00bcf2;
     padding-bottom: 30px;
     padding-top: 30px;
+    
 }
 
 #content {
