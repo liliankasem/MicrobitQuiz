@@ -55,7 +55,7 @@
             $scope.options = [];
             $scope.question = [];
 
-            $http.get("http://quizapi.azurewebsites.net/api/TriviaQuestions?name=snowflake").success(function (data, status, headers, config) {
+            $http.get("http://cors.io/?u=http://quizapi.azurewebsites.net/api/TriviaQuestions?name=snowflake").success(function (data, status, headers, config) {
                 $scope.question = data[$scope.counter];
                 $scope.options = $scope.question.Options;
                 $scope.title = $scope.question.Title;
