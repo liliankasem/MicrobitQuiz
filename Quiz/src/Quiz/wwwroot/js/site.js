@@ -1,7 +1,7 @@
 ﻿angular.module('QuizApp', [])
     .controller('QuizCtrl', function ($scope, $http, $window, $timeout) {
         $scope.answered = false;
-        $scope.title = "loading question...";
+        $scope.title = "Loading question...";
         $scope.options = [];
         $scope.correctAnswer = false;
         $scope.disabled = false;
@@ -16,12 +16,14 @@
         $scope.answerHidden = true;
         $scope.tryAgain = "";
         $scope.rightAnswer = "";
-
+        $scope.answerDisabled = true;
         $scope.redirected = "";
+
 
         $scope.answer = function () {
             return $scope.correctAnswer ? 'Correct' : 'Incorrect';
         };
+
 
         $scope.checkQuestions = function () {
             $scope.disabled = true;
@@ -51,6 +53,7 @@
             $scope.disabled = false;
         }
 
+
         $scope.nextQuestion = function () {
             $scope.tryAgain = "";
             $scope.disabled = true;
@@ -71,11 +74,9 @@
                 $scope.counter++;
                 $scope.attempt = 0;
             }).error(function (data, status, headers, config) {
-                $scope.title = "Oops... something went wrong inside http.get nextFunction()";
+                $scope.title = "Oops... something went wrong inside: http.get nextQunction()";
                 $scope.disabled = false;
             });
-
-
         };
 
 
@@ -87,6 +88,7 @@
             if (option.IsCorrect == true) {
                 $scope.score++;
                 $scope.correctAnswer = true;
+                $scope.answerDisabled = true;
                 $scope.checkQuestions();
             } else if (option.IsCorrect == false && $scope.attempt < 1) {
                 $scope.answered = false;
@@ -96,21 +98,21 @@
                 $scope.tryAgain = "| Try 1 more time!";
             } else {
                 $scope.correctAnswer = false;
+                $scope.answerDisabled = false;
+                $scope.getRightAnswer();
                 $scope.checkQuestions();
             }
         }
 
 
         $scope.getRightAnswer = function () {
-            //TO:DO Get the correct answer for the current question
-            //and display the answer to users who get it wrong
+            angular.forEach($scope.options, function (option) {
+                if (option.IsCorrect === true) {
+                    $scope.rightAnswer = "The correct answer was: " + option.Title;
+                    return;
+                }
+            });
         }
-
-
-
-
-
-
 
 
         $scope.sendAnswer = function (result) {
@@ -142,7 +144,7 @@
             //    //redirect to iDEA
             //    $window.location = data.redirectUrl;
             //}).error(function (data, status, headers, config) {
-            //    $scope.title = "Oops... something went wrong in htttp.post sendAnswer()";
+            //    $scope.title = "Oops... something went wrong inside: http.post sendAnswer()";
             //    $scope.disabled = false;
             //});
         };

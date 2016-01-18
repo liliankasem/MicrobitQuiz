@@ -26,16 +26,17 @@
         <div class="container">
             <div class="row">
                 <div class="text-center col-md-12" ng-controller="QuizCtrl" ng-init="checkQuestions()">
+                    <p class="lead">Score: {{score}}</p>
 
                     <div class="back" ng-class="{correct: correctAnswer, incorrect:!correctAnswer}">
                         <p class="lead" ng-hide="answerHidden">
                             {{answer()}} {{tryAgain}}
-                            <br />
+                        </p>
+                        <p class="lead" ng-hide="answerDisabled">
                             {{rightAnswer}}
                         </p>
                     </div>
-
-                    <p class="lead">Score: {{score}}</p>
+                 
                     <p class="lead">{{title}}</p>
                     <p class="lead">{{redirected}}</p>
 
