@@ -1,6 +1,6 @@
 ﻿<div id="startingDiv" style="color:white;">
     <h2>@ViewData["Title"]</h2>
-
+    <br>
     <iframe width="80%" height="500" src="https://www.youtube.com/embed/8znu58E7tN8" frameborder="0" allowfullscreen></iframe>
     
     <br /><br />
@@ -20,7 +20,7 @@
 
 <br />
 
-<div id="bodyContainer" ng-app="QuizApp" style="display: none;" >
+<div id="bodyContainer" ng-app="QuizApp" style="display: none;" align="center" >
     <section id="content">
         <div class="container">
             <div class="row">
@@ -44,6 +44,7 @@
                     </div>
 
                 </div>
+            </div>
         </div>
     </section>
 </div>
@@ -57,5 +58,4 @@
     var quizName = "@ViewData["QuizName"]";
     var apiKey = "@ViewData["APIKey"]";
     var token = location.search.split('token=')[1];
-
 </script>

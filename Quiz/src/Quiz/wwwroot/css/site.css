@@ -83,6 +83,8 @@ textarea {
     position: relative;
     background: #fff;
     padding: 50px 0 50px 0;
+    border-radius: 50px;
+    width: 80%;
 }
 
 .option {

@@ -22,7 +22,8 @@
     </head>
     <body>
         <div class="container body-content">
-            <a asp-controller="Home" asp-action="Index"><div class="header"></div></a>
+            @*<a asp-controller="Home" asp-action="Index"><div class="header"></div></a>*@
+            <div class="header"></div>
             @RenderBody()
             <hr />
             <footer style="color: white;">
@@ -55,8 +56,8 @@
                     asp-fallback-src="~/lib/bootstrap-touch-carousel/dist/js/bootstrap-touch-carousel.js"
                     asp-fallback-test="window.Hammer && window.Hammer.Instance">
             </script>
-           
-            <script src="~/js/angular.js" asp-file-version="true"></script>
+
+            <script src="~/lib/angular/angular.min.js"></script>
             <script src="~/js/site.js" asp-file-version="true"></script>
         </environment>
 

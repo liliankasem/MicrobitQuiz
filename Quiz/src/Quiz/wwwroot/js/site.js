@@ -1,14 +1,14 @@
 ﻿var app = angular.module('QuizApp', [])
     .controller('QuizCtrl', function ($scope, $http, $window, $timeout) {
 
-    app.config(['$httpProvider', function ($httpProvider) {
-        $httpProvider.defaults.useXDomain = true;
-        delete $httpProvider.defaults.headers.common['X-Requested-With'];
-        delete $httpProvider.defaults.headers.common['x-csrftoken'];
-        $httpProvider.defaults.headers.post['Accept'] = 'application/json, text/javascript';
-        $httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
-        $httpProvider.defaults.headers.post['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS';
-    }]);
+        app.config(['$httpProvider', function ($httpProvider) {
+            $httpProvider.defaults.useXDomain = true;
+            delete $httpProvider.defaults.headers.common['X-Requested-With'];
+            delete $httpProvider.defaults.headers.common['x-csrftoken'];
+            $httpProvider.defaults.headers.post['Accept'] = 'application/json, text/javascript';
+            $httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
+            $httpProvider.defaults.headers.post['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS';
+        }]);
 
         $scope.answered = false;
         $scope.title = "Loading question...";
@@ -37,14 +37,14 @@
 
         $scope.checkQuestions = function () {
             $scope.disabled = true;
-            
+
 
             if ($scope.numQuestions == 0) {
                 $scope.tryAgain = "";
                 $scope.options = [];
                 $scope.title = "End";
 
-                if($scope.score >= 4){
+                if ($scope.score >= 4) {
                     $scope.badgeResult = "pass";
                     $scope.title = "Well done! You passed."
                     $scope.redirected = "You will be redirect to iDEA";
@@ -144,11 +144,11 @@
                 method: 'POST',
                 url: $scope.postUrl,
                 data: "result=" + result,
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded'}
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             }).success(function (data) {
                 $timeout(function () {
                     $window.location = data.redirectUrl;
-                }, 3000);               
+                }, 3000);
             }).error(function () {
                 $scope.title = "Oops... something went wrong inside: http.post sendAnswer()";
                 $scope.disabled = false;
@@ -157,4 +157,3 @@
         };
 
     });
-
