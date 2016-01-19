@@ -1,6 +1,6 @@
 ﻿<div id="startingDiv" style="color:white;">
     <h2>@ViewData["Title"]</h2>
-    <div id="token" style="color:white;"></div>
+    @*<div id="token" style="color:white;"></div>*@
 
     <iframe width="80%" height="500" src="https://www.youtube.com/embed/xQZFWA2KDbw" frameborder="0" allowfullscreen></iframe>
     <br /><br />
@@ -57,5 +57,5 @@
     var quizName = "@ViewData["QuizName"]";
     var apiKey = "@ViewData["APIKey"]";
     var token = location.search.split('token=')[1];
-    document.getElementById("token").innerHTML = token;
+    //document.getElementById("token").innerHTML = token;
 </script>

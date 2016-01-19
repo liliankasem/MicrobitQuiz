@@ -1,5 +1,15 @@
-﻿angular.module('QuizApp', [])
+﻿var app = angular.module('QuizApp', [])
     .controller('QuizCtrl', function ($scope, $http, $window, $timeout) {
+
+    app.config(['$httpProvider', function ($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+        delete $httpProvider.defaults.headers.common['x-csrftoken'];
+        $httpProvider.defaults.headers.post['Accept'] = 'application/json, text/javascript';
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
+        $httpProvider.defaults.headers.post['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS';
+    }]);
+
         $scope.answered = false;
         $scope.title = "Loading question...";
         $scope.options = [];
@@ -37,11 +47,11 @@
                 if($scope.score >= 4){
                     $scope.badgeResult = "pass";
                     $scope.title = "Well done! You passed."
-                    $scope.redirected = "You will be redirect to the homepage in 5 seconds.";
+                    $scope.redirected = "You will be redirect to iDEA";
                 } else {
                     $scope.badgeResult = "fail";
                     $scope.title = "Uh oh! Looks like you need more practise.";
-                    $scope.redirected = "You will be redirect to the homepage in 5 seconds.";
+                    $scope.redirected = "You will be redirect to iDEA";
                 }
                 $scope.answerHidden = true;
                 $scope.sendAnswer($scope.badgeResult);
@@ -119,34 +129,31 @@
             $scope.disabled = true;
             $scope.answered = true;
 
-            //Users token;
             $scope.token = token;
-            //Our API key
             $scope.apiKey = apiKey;
 
             //iDEA API, production
-            //$scope.postUrl = "https://api.idea.org.uk/result?apiKey=" + $scope.apiKey + "&token=" + $scope.token;
+            //$scope.postUrl = "https://api.idea.org.uk/api/result?apiKey=" + $scope.apiKey + "&token=" + $scope.token;
 
             //iDEA API, sandbox
-            $scope.postUrl = "http://api-sandbox.idea.org.uk/result?apiKey=" + $scope.apiKey + "&token=" + $scope.token;
+            $scope.postUrl = "http://40.127.184.66/api/result?apiKey=" + $scope.apiKey + "&token=" + $scope.token;
 
-            //Placeholder 
-            $timeout(function () {
-                $window.location = "/Home";
-            }, 5000); 
-            
 
-            //$location.path(url);
 
-            //Send badge result to iDEA API
-            //$http.post($scope.postUrl, {"result": result}).success(function (data, status, headers, config) {
-            //    $scope.disabled = false;
-            //    //redirect to iDEA
-            //    $window.location = data.redirectUrl;
-            //}).error(function (data, status, headers, config) {
-            //    $scope.title = "Oops... something went wrong inside: http.post sendAnswer()";
-            //    $scope.disabled = false;
-            //});
+            $http({
+                method: 'POST',
+                url: $scope.postUrl,
+                data: "result=" + result,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data) {
+                $timeout(function () {
+                    $window.location = data.redirectUrl;
+                }, 3000);               
+            }).error(function () {
+                $scope.title = "Oops... something went wrong inside: http.post sendAnswer()";
+                $scope.disabled = false;
+            });
+
         };
 
     });

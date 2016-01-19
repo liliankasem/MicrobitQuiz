@@ -18,7 +18,7 @@ namespace Quiz.Controllers
         {
             ViewData["Title"] = "Microbit Snowflake Badge";
             ViewData["QuizName"] = "snowflake";
-            ViewData["APIKey"] = "89UA9DAS0DUA0DU00JIJGY";
+            ViewData["APIKey"] = "5f532a3fc4f1ea403f37070f59a7a53a";
 
             return View();
 
@@ -28,7 +28,7 @@ namespace Quiz.Controllers
         {
             ViewData["Title"] = "Microbit Love Meter Badge";
             ViewData["QuizName"] = "lovemeter";
-            ViewData["APIKey"] = "89UA9DAS0DUA0DU00JIJGY";
+            ViewData["APIKey"] = "5f532a3fc4f1ea403f37070f59a7a53a";
 
             return View();
 
@@ -38,7 +38,7 @@ namespace Quiz.Controllers
         {
             ViewData["Title"] = "Microbit Sorting Hat Badge";
             ViewData["QuizName"] = "sortinghat";
-            ViewData["APIKey"] = "89UA9DAS0DUA0DU00JIJGY";
+            ViewData["APIKey"] = "5f532a3fc4f1ea403f37070f59a7a53a";
 
             return View();
 
