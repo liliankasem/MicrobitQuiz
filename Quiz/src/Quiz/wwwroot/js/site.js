@@ -47,11 +47,11 @@
                 if ($scope.score >= 4) {
                     $scope.badgeResult = "pass";
                     $scope.title = "Well done! You passed."
-                    $scope.redirected = "You will be redirect to iDEA";
+                    $scope.redirected = "You will be redirect to iDEA.";
                 } else {
                     $scope.badgeResult = "fail";
-                    $scope.title = "Uh oh! Looks like you need more practise.";
-                    $scope.redirected = "You will be redirect to iDEA";
+                    $scope.title = "Uh oh, looks like you didn't pass! You need to successfully pass the quiz to achieve the badge.";
+                    $scope.redirected = "You will be redirect to iDEA - go on give it another go!";
                 }
                 $scope.answerHidden = true;
                 $scope.sendAnswer($scope.badgeResult);
