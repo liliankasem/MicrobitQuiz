@@ -12,6 +12,7 @@ using QuizAPI.Models;
 
 namespace QuizAPI.Controllers
 {
+    [Authorize]
     public class TriviaQuestionsController : ApiController
     {
         private QuizAPIContext db = new QuizAPIContext();
