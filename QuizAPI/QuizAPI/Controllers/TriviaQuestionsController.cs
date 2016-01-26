@@ -9,10 +9,11 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using QuizAPI.Models;
+using System.Web.Http.Cors;
 
 namespace QuizAPI.Controllers
 {
-    [Authorize]
+    [EnableCors(origins: "http://microbitquiz.azurewebsites.net", headers: "*", methods: "*")]
     public class TriviaQuestionsController : ApiController
     {
         private QuizAPIContext db = new QuizAPIContext();

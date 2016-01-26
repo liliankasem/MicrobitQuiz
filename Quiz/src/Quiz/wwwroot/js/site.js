@@ -73,7 +73,7 @@
             $scope.options = [];
             $scope.question = [];
 
-            $http.get("http://cors.io/?u=http://quizapi.azurewebsites.net/api/TriviaQuestions?name=" + quizName).success(function (data, status, headers, config) {
+            $http.get("http://quizapi.azurewebsites.net/api/TriviaQuestions?name=" + quizName).success(function (data, status, headers, config) {
                 $scope.question = data[$scope.counter];
                 $scope.options = $scope.question.Options;
                 $scope.title = $scope.question.Title;
@@ -84,7 +84,7 @@
                 $scope.counter++;
                 $scope.attempt = 0;
             }).error(function (data, status, headers, config) {
-                $scope.title = "Oops... something went wrong inside: http.get nextQunction()";
+                $scope.title = "Oops... something went wrong inside: http.get nextQuestion()";
                 $scope.disabled = false;
             });
         };
