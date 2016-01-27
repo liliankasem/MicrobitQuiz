@@ -133,10 +133,10 @@
             $scope.apiKey = apiKey;
 
             //iDEA API, production
-            //$scope.postUrl = "https://api.idea.org.uk/api/result?apiKey=" + $scope.apiKey + "&token=" + $scope.token;
+            $scope.postUrl = "https://idea.org.uk/api/result?apiKey=" + $scope.apiKey + "&token=" + $scope.token;
 
             //iDEA API, sandbox
-            $scope.postUrl = "http://40.127.184.66/api/result?apiKey=" + $scope.apiKey + "&token=" + $scope.token;
+            //$scope.postUrl = "http://40.127.184.66/api/result?apiKey=" + $scope.apiKey + "&token=" + $scope.token;
 
 
 
