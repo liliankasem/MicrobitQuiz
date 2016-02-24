@@ -3,14 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3E1BC66B-5372-40D6-B51D-A38E9A5A5972}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{96FB2EC2-05FE-4BB4-BA19-15E35D4E7A2A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B653FB4C-F7DE-44A8-8364-9A426EE77844}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{627164EB-FB2E-4585-BD40-C3C4BD79749B}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Quiz", "src\Quiz\Quiz.xproj", "{C70958BA-B629-4526-A955-B5ADC27CF232}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Quiz", "src\Quiz\Quiz.xproj", "{5C0F14DE-E333-4816-85B0-309324F7FA8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,15 +18,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C70958BA-B629-4526-A955-B5ADC27CF232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C70958BA-B629-4526-A955-B5ADC27CF232}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C70958BA-B629-4526-A955-B5ADC27CF232}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C70958BA-B629-4526-A955-B5ADC27CF232}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C0F14DE-E333-4816-85B0-309324F7FA8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C0F14DE-E333-4816-85B0-309324F7FA8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C0F14DE-E333-4816-85B0-309324F7FA8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C0F14DE-E333-4816-85B0-309324F7FA8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{C70958BA-B629-4526-A955-B5ADC27CF232} = {3E1BC66B-5372-40D6-B51D-A38E9A5A5972}
+		{5C0F14DE-E333-4816-85B0-309324F7FA8C} = {96FB2EC2-05FE-4BB4-BA19-15E35D4E7A2A}
 	EndGlobalSection
 EndGlobal

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Routing;
+﻿using Microsoft.AspNet.Mvc;
 
 namespace Quiz.Controllers
 {
@@ -20,7 +15,7 @@ namespace Quiz.Controllers
             ViewData["QuizName"] = "snowflake";
             ViewData["APIKey"] = "5f532a3fc4f1ea403f37070f59a7a53a";
 
-            return View();
+            return View("~/Views/Home/SnowflakeQuiz.cshtml");
 
         }
 
@@ -30,7 +25,7 @@ namespace Quiz.Controllers
             ViewData["QuizName"] = "lovemeter";
             ViewData["APIKey"] = "5f532a3fc4f1ea403f37070f59a7a53a";
 
-            return View();
+            return View("~/Views/Home/LoveMeterQuiz.cshtml");
 
         }
 
@@ -40,8 +35,7 @@ namespace Quiz.Controllers
             ViewData["QuizName"] = "sortinghat";
             ViewData["APIKey"] = "5f532a3fc4f1ea403f37070f59a7a53a";
 
-            return View();
-
+            return View("~/Views/Home/SortingHatQuiz.cshtml");
         }
 
         public IActionResult Error()
