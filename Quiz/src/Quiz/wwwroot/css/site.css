@@ -18,6 +18,12 @@
     margin-bottom: 50px;
 }
 
+.windsor-footer {
+    position:absolute;
+    width: 100%;
+    bottom:0;
+}
+
 .center {
      margin: auto;
      width: 60%;
