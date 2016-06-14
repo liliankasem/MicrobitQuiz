@@ -11,7 +11,7 @@ namespace Quiz.Controllers
 
         public IActionResult SnowflakeQuiz()
         {
-            ViewData["Title"] = "Micro:bit Snowflake Badge";
+            ViewData["Title"] = "micro:bit Snowflake Badge";
             ViewData["QuizName"] = "snowflake";
             ViewData["APIKey"] = "5f532a3fc4f1ea403f37070f59a7a53a";
 
@@ -21,7 +21,7 @@ namespace Quiz.Controllers
 
         public IActionResult LoveMeterQuiz()
         {
-            ViewData["Title"] = "Micro:bit Love Meter Badge";
+            ViewData["Title"] = "micro:bit Love Meter Badge";
             ViewData["QuizName"] = "lovemeter";
             ViewData["APIKey"] = "5f532a3fc4f1ea403f37070f59a7a53a";
 
@@ -31,7 +31,7 @@ namespace Quiz.Controllers
 
         public IActionResult SortingHatQuiz()
         {
-            ViewData["Title"] = "Micro:bit Sorting Hat Badge";
+            ViewData["Title"] = "micro:bit Sorting Hat Badge";
             ViewData["QuizName"] = "sortinghat";
             ViewData["APIKey"] = "5f532a3fc4f1ea403f37070f59a7a53a";
 
